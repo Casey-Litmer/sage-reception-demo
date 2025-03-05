@@ -1,0 +1,19 @@
+
+
+- Using React@19 and vite@latest for this demo
+
+- Can't get tailwind to import rules in index.css (breaking change?)
+    - Attempting to add
+        ```
+        @tailwind base;
+        @tailwind components;
+        @tailwind utilities;
+        ```
+        gives warning: "Unknown at rule @tailwind"
+
+    - Tailwind is now working.  You must expand all of the extensions in 'content'
+        rather than doing '.{ts,tsx,...}'
+
+        But the warning still persists... fuck it
+
+    
