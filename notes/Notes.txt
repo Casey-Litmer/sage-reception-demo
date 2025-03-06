@@ -1,4 +1,6 @@
 
+//=================================================================
+//Issues
 
 - Using React@19 and vite@latest for this demo
 
@@ -16,4 +18,30 @@
 
         But the warning still persists... fuck it
 
-    
+
+- For some reason, the new vite project added margins to #root, which cannot be overwritten
+    in index.css.  Not sure where the default #root is that the body div is pulling from
+
+    - What I tried: 
+        - Moving index.css outside of src
+        - defining #root
+
+    - What works (in index.css)
+        ```
+        * {
+        margin: 0px !important;
+        padding: 0px !important;
+        }
+        ```
+
+
+
+//================================================================  
+//Todo
+
+- look into .env handling (will be important in actual production)
+    - .env : loaded in all cases
+    - .env.local : loaded in all cases, ignored by git
+    - .env.[mode] : loaded in specific mode
+    - .env.[mode].local : loaded in specific mode, ignored by git
+

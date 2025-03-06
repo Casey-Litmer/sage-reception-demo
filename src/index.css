@@ -3,11 +3,16 @@
 @tailwind utilities;
 
 
+* {
+  margin: 0px !important;
+  padding: 0px !important;
+}
 
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
+
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -17,6 +22,11 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --color-background: 'rgb(255, 255, 255)';
+  --color-middle: 'rgb(146, 16, 16)';
+  --color-top: 'rgb(211, 132, 28)';
+
 }
 
 a {
@@ -31,7 +41,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  
   min-width: 320px;
   min-height: 100vh;
 }
@@ -48,7 +58,7 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #313131;
   cursor: pointer;
   transition: border-color 0.25s;
 }
