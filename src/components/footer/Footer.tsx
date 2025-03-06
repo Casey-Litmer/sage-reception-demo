@@ -1,10 +1,10 @@
-import React, { JSX, useState } from 'react';
+import React, { JSX } from 'react';
 import './Footer.css';
 import 'flowbite/dist/flowbite.css';
-import { FOOTER_HEIGHT } from '../GLOBALS';
+import { FOOTER_HEIGHT } from '../../GLOBALS';
 import { Button } from 'flowbite-react';
-import CalendarComponent from './taskViews/Calendar';
-import SMSComponent from './taskViews/SMS';
+import CalendarComponent from '../taskViews/Calendar';
+import SMSComponent from '../taskViews/SMS';
 import { FaRegCalendarAlt, FaPaperPlane } from "react-icons/fa";
 
 

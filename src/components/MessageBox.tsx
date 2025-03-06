@@ -1,20 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './MessageBox.css';
 import { Message } from '../types';
-import { Divider, IconButton } from '@mui/material';
+import { IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight} from '@mui/icons-material';
 import { useMessages } from '../contexts/MessageProvider';
-import { DropdownDivider } from 'flowbite-react';
 
 
 
 export default function MessageBox() {
-    const {createMessageTimeTable} = useMessages();
+    const {pendingMessages} = useMessages();
 
-    const messageTimeTable = createMessageTimeTable();
-    const items = Object.entries(messageTimeTable)
-        .flatMap(([time, messages]) => messages)
-        .map(message => <MessageContainer message={message}/>)
+    const items = pendingMessages
+        .map(message => <MessageContainer message={message}/>);
 
     return (
         <div className='BoxOutline MessageBox'>
@@ -26,19 +23,22 @@ export default function MessageBox() {
 //============================================================================
 interface MessageContainerProps {
     message: Message;
-}
-
+};
 export function MessageContainer(props: MessageContainerProps) {
     const {message} = props;
     const [open, setOpen] = useState(false);
-
-    const info = `${message.date}  from: ${message.author}`;
-
+    
+    //============================================================================
+    const messageTime = message.messageTime;
+    const formattedTime = `${messageTime.getHours()}:${messageTime.getMinutes()}:${messageTime.getSeconds()}`
+    const info = `${formattedTime} from: ${message.author}`;
+    
+    //============================================================================
     const handleOpen = () => setOpen(o => !o);
 
+    //============================================================================
     return (
         <div className='BoxOutline MessageContainer'>
-
             <div style={{flexDirection:'row', display:'flex', alignItems:'center'}}>
                 <IconButton id='View Message'
                     onClick = {handleOpen}
@@ -55,10 +55,6 @@ export function MessageContainer(props: MessageContainerProps) {
                     {message.message}
                 </div>
             }
-
         </div>
     );
-}
-
-
-
+};

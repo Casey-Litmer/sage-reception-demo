@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Calendar, momentLocalizer, SlotInfo, View, Views } from 'react-big-calendar';
 import moment from 'moment';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import './Calendar.css';
-import { useEvents } from '../../contexts/EventsProvider';
+import { useCalendarEvents } from '../../contexts/CalendarEventsProvider';
 
 
 
@@ -13,7 +13,7 @@ const localizer = momentLocalizer(moment);
 export default function CalendarComponent() {
     const [view, setView] = useState<View>(Views.WEEK);
     const [date, setDate] = useState(new Date());
-    const {events, dispatchEvents} = useEvents();
+    const {events, dispatchEvents} = useCalendarEvents();
 
     const handleSelectSlot = ({start, end}: SlotInfo) => {
         if (view !== Views.MONTH) {
@@ -39,7 +39,6 @@ export default function CalendarComponent() {
                 selectable
                 showMultiDayTimes
             />
-
         </div>
     );
 };

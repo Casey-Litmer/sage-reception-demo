@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import './SMS.css';
 import { Button } from 'flowbite-react';
 import { CiPaperplane } from "react-icons/ci";
+import { useMessages } from '../../contexts/MessageProvider';
 
 export default function SMSComponent() {
+    const {isMessageResponded} = useMessages();
     const [phoneNumber, setPhoneNumber] = useState('');
     const [response, setResponse] = useState('');
     
     const handleSubmit = (ev:any) => {
         ev.preventDefault();
-        
+        setPhoneNumber('');
+        setResponse('');
+        isMessageResponded(phoneNumber);
     };
     const handleNumber = (ev: any) => setPhoneNumber(ev.target.value);
     const handleResponse = (ev: any) => setResponse(ev.target.value);
@@ -19,11 +23,13 @@ export default function SMSComponent() {
             <div>Client's Phone Number:</div>
             <input
                 type='text'
+                value={phoneNumber}
                 onChange={handleNumber}
                 className='w-2/3'
             />
             <div>Your Response:</div>
             <textarea
+                value={response}
                 onChange={handleResponse}
                 className='w-2/3 Input'
             />

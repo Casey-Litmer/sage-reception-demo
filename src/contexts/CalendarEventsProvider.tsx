@@ -1,5 +1,7 @@
-import { createContext, useContext, useReducer, useState } from 'react';
+import { createContext, useContext, useReducer} from 'react';
 import { CalendarEvent } from '../types';
+import { useMessages } from './MessageProvider';
+
 
 type EventsContextProviderProps = {
     children: React.ReactNode;
@@ -12,11 +14,17 @@ type EventsContextType = {
 
 export const EventsContext = createContext({} as EventsContextType);
 
-export const EventsProvider = ({ children }: EventsContextProviderProps) => {
+export const CalendarEventsProvider = ({ children }: EventsContextProviderProps) => {
+    const {isMessageOnCalendar} = useMessages();
 
+    //====================================================================
     const eventsReducer = (prev: CalendarEvent[], newEvent: CalendarEvent) => {
+        //In real life, this wouldn't check if the new event is added to the calendar
+        //here.  That would be up to the microservices.  
+        isMessageOnCalendar(newEvent.start);
         return [newEvent, ...prev];
     };
+    
     const [events, dispatchEvents] = useReducer(
         eventsReducer, [
         {
@@ -26,6 +34,7 @@ export const EventsProvider = ({ children }: EventsContextProviderProps) => {
         },
     ]);
 
+    //====================================================================
     return (
         <EventsContext.Provider
             value={{
@@ -38,8 +47,8 @@ export const EventsProvider = ({ children }: EventsContextProviderProps) => {
     );
 };
 
-
-export function useEvents() {
+//====================================================================
+export function useCalendarEvents() {
     const context = useContext(EventsContext);
     return context;
 };
