@@ -9,14 +9,14 @@ export default function PageContents(props: PageContentsProps) {
   
     return (
         <div style={{
-            //alignItems:'center',
-            justifyContent:'center',
+            alignItems:'center',
+            //justifyContent:'center',
             display: 'flex',
-            flexDirection:'row',
+            flex: 1,
+            flexDirection:'column',
             width: '100%',
             height: '100%',
-            paddingTop: '64px',
-
+            paddingTop: '32px',
         }}>
             {children}
         </div>

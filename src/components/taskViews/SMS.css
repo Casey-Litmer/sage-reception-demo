@@ -1,0 +1,9 @@
+.SMS {
+    width: 100vw;
+    height: 400px;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}

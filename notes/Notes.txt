@@ -36,6 +36,10 @@
         - The secret #root is in Home.css
             This is stupid and should not be the default >:(
 
+- The calendar component has a hard time using % height. 
+  It pushes everything around so I have to set it to a fixed
+  height of 400px.  This of course doesn't scale with the window.
+  It might be one of those things that you have to calculate the height manually.
 
 //================================================================  
 //Todo

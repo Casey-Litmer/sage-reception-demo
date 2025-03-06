@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './MessageBox.css';
 import { Message } from '../types';
-import { IconButton } from '@mui/material';
+import { Divider, IconButton } from '@mui/material';
 import { ChevronLeft, ChevronRight} from '@mui/icons-material';
 import { useMessages } from '../contexts/MessageProvider';
+import { DropdownDivider } from 'flowbite-react';
 
 
 
@@ -38,7 +39,6 @@ export function MessageContainer(props: MessageContainerProps) {
     return (
         <div className='BoxOutline MessageContainer'>
 
-
             <div style={{flexDirection:'row', display:'flex', alignItems:'center'}}>
                 <IconButton id='View Message'
                     onClick = {handleOpen}
@@ -51,7 +51,7 @@ export function MessageContainer(props: MessageContainerProps) {
 
             {open && 
                 <div 
-                className='BoxOutline DropDownContainer'>
+                className='DropDownContainer'>
                     {message.message}
                 </div>
             }
