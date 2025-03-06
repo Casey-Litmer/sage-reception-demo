@@ -25,15 +25,16 @@
     - What I tried: 
         - Moving index.css outside of src
         - defining #root
-
-    - What works (in index.css)
-        ```
-        * {
-        margin: 0px !important;
-        padding: 0px !important;
-        }
-        ```
-
+        - Adding this to index.css overrides ALL margins/paddings
+            ```
+            * {
+            margin: 0px !important;
+            padding: 0px !important;
+            }
+            ```
+    - What works:
+        - The secret #root is in Home.css
+            This is stupid and should not be the default >:(
 
 
 //================================================================  

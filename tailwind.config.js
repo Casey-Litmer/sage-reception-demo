@@ -8,7 +8,13 @@ export default {
     "./src/**/*.tsx",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        background: 'var(--color-background)',
+        middle: 'var(--color-middle)',
+        top: 'var(--color-top)'
+      },
+    },
   },
   plugins: [],
 }
