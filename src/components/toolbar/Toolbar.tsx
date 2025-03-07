@@ -20,7 +20,7 @@ export default function Toolbar(props: FooterProps) {
 
     return (
         <div className='BoxOutline Toolbar bg-background' style={{height: FOOTER_HEIGHT}}>
-            <Button.Group>
+            <Button.Group className='space-x-2'>
                 <Button onClick={() => setView(<CalendarComponent/>)}>
                     <FaRegCalendarAlt size={ICON_SIZE} color='var(--color-middle)'/>
                 </Button>

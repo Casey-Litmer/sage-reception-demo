@@ -52,7 +52,7 @@ export const MessageProvider = ({ children }: ContextProviderProps) => {
     };
     const [messages, dispatchMessages] = useReducer(
         messageTableReducer, {
-            0: FIRST_MESSAGE_STATUS,
+            0: FIRST_MESSAGE(),
             ...Object.fromEntries(
                 Array.from({length: 0}, (_, n) => ([n, {   
                     message:{
@@ -146,19 +146,21 @@ export function useMessages() {
 
 
 //====================================================================
-const now = new Date();
-const FIRST_MESSAGE_STATUS = {
-    message: {
-        message: `Hey it's Jeff Coleman!  I need you to write me a React demo using some of our dependenices!  \
-                    I need it done today at ${now.getHours()}:00.`,
-        author: 'Jeff Coleman',
-        phoneNumber: '503-706-4442',
-        date: now,
-        messageTime: now,
-        cleared: false,
-        timeToRespond: 90000
-    },
-    responded: false,
-    onCalendar: false,
-    remainingTime: 90000
-} as MessageStatus;
+const FIRST_MESSAGE = () => {
+    const now = new Date();
+    return {
+        message: {
+            message: `Hey it's Jeff Coleman!  I need you to write me a React demo using some of our dependenices!  \
+                        I need it done today at ${now.getHours()}:00.`,
+            author: 'Jeff Coleman',
+            phoneNumber: '503-706-4442',
+            date: now,
+            messageTime: now,
+            cleared: false,
+            timeToRespond: 90000
+        },
+        responded: false,
+        onCalendar: false,
+        remainingTime: 90000
+    } as MessageStatus;
+};
