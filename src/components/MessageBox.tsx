@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './MessageBox.css';
 import { Message } from '../types';
 import { IconButton } from '@mui/material';
-import { ChevronLeft, ChevronRight} from '@mui/icons-material';
+import { ChevronLeft, ChevronRight, Warning} from '@mui/icons-material';
 import { useMessages } from '../contexts/MessageProvider';
 
 
@@ -38,7 +38,8 @@ export function MessageContainer(props: MessageContainerProps) {
     const timerBarPercent = remainingTime / message.timeToRespond * 100;
     const formattedTime = `${messageTime.getHours()}:${messageTime.getMinutes()}:${messageTime.getSeconds()}`
     const info = `[${formattedTime}]: ${message.author} (${message.phoneNumber})`;
-    
+    const urgent = message.timeToRespond < 60000; 
+
     //============================================================================
     const handleOpen = () => setOpen(o => !o);
 
@@ -53,12 +54,18 @@ export function MessageContainer(props: MessageContainerProps) {
                 </IconButton>
 
                 <text>{info}</text>
+
+                {urgent && 
+                <div className='absolute right-8' 
+                    style={{color:'var(--color-middle)'}}>
+                    Urgent
+                    <Warning/>
+                </div>}
             </div>
 
             <div className='h-2.1 w-full' style={{
                 borderTop: 1, borderBottom:1, 
                 borderStyle:'solid', borderColor: 'var(--color-top)'
-        
             }}>
                 <div className='bg-middle h-2' id='TimerBar'
                     style={{width:`${timerBarPercent}%`}}/>
