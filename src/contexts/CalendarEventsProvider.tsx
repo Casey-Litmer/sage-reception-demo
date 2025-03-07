@@ -25,14 +25,7 @@ export const CalendarEventsProvider = ({ children }: EventsContextProviderProps)
         return [newEvent, ...prev];
     };
     
-    const [events, dispatchEvents] = useReducer(
-        eventsReducer, [
-        {
-            title: 'Meeting',
-            start: new Date(),
-            end: new Date(),
-        },
-    ]);
+    const [events, dispatchEvents] = useReducer(eventsReducer, []);
 
     //====================================================================
     return (

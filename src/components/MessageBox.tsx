@@ -10,8 +10,12 @@ import { useMessages } from '../contexts/MessageProvider';
 export default function MessageBox() {
     const {pendingMessages} = useMessages();
 
-    const items = pendingMessages
-        .map(message => <MessageContainer message={message}/>);
+    const items = pendingMessages.map(ms => {
+        const key = ms.message.messageTime.toString();
+        const message = ms.message;
+        const remainingTime = ms.remainingTime;
+        return <MessageContainer key={key} message={message} remainingTime={remainingTime}/>
+    });
 
     return (
         <div className='BoxOutline MessageBox'>
@@ -23,15 +27,17 @@ export default function MessageBox() {
 //============================================================================
 interface MessageContainerProps {
     message: Message;
+    remainingTime: number;
 };
 export function MessageContainer(props: MessageContainerProps) {
-    const {message} = props;
+    const {message, remainingTime} = props;
     const [open, setOpen] = useState(false);
     
     //============================================================================
     const messageTime = message.messageTime;
+    const timerBarPercent = remainingTime / message.timeToRespond * 100;
     const formattedTime = `${messageTime.getHours()}:${messageTime.getMinutes()}:${messageTime.getSeconds()}`
-    const info = `${formattedTime} from: ${message.author}`;
+    const info = `[${formattedTime}]: ${message.author} (${message.phoneNumber})`;
     
     //============================================================================
     const handleOpen = () => setOpen(o => !o);
@@ -47,6 +53,15 @@ export function MessageContainer(props: MessageContainerProps) {
                 </IconButton>
 
                 <text>{info}</text>
+            </div>
+
+            <div className='h-2.1 w-full' style={{
+                borderTop: 1, borderBottom:1, 
+                borderStyle:'solid', borderColor: 'var(--color-top)'
+        
+            }}>
+                <div className='bg-middle h-2' id='TimerBar'
+                    style={{width:`${timerBarPercent}%`}}/>
             </div>
 
             {open && 

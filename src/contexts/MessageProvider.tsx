@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer, useRef, useState } from 'react';
-import { Message, MessageRecord, MessageTable } from '../types';
+import { Message, MessageRecord, MessageStatus, } from '../types';
 
 
 type ContextProviderProps = {
@@ -8,7 +8,7 @@ type ContextProviderProps = {
 
 type MessageContextType = {
     messages: MessageRecord;
-    pendingMessages: Message[];
+    pendingMessages: MessageStatus[];
     dispatchMessages: React.Dispatch<Message>;
     isMessageResponded: (phoneNumber: string) => void;
     isMessageOnCalendar: (date: Date) => void;
@@ -17,9 +17,8 @@ type MessageContextType = {
 export const MessageContext = createContext({} as MessageContextType);
 
 export const MessageProvider = ({ children }: ContextProviderProps) => {
-    const [lastMessageId, setLastMessageId] = useState(0);
-    const [messageTimeTable, setMessageTimeTable] = useState<MessageTable>({});
-    const [pendingMessages, setPendingMessages] = useState<Message[]>([]);
+    const [lastMessageId, setLastMessageId] = useState(1);
+    const [pendingMessages, setPendingMessages] = useState<MessageStatus[]>([]);
 
     //====================================================================
     /** Clears message if it is on the calendar and responded to */
@@ -30,40 +29,30 @@ export const MessageProvider = ({ children }: ContextProviderProps) => {
         };
     };
 
-    /**Creates a table hashed by time (hours) of message arrays */
-    const createMessageTimeTable = (messages: MessageRecord) => {
-        const table = {} as MessageTable;
-        Object.values(messages)
-            .filter((ms) => !ms.message.cleared)
-            .forEach((ms) => {
-                const messageTime = ms.message.date.getHours();
-                if (messageTime in table) 
-                    table[messageTime] = [ms.message, ...table[messageTime]]
-                        .sort((m1,m2) => m1.date.getHours() - m2.date.getHours());
-                else 
-                    table[messageTime] = [ms.message];
-            });
-        return table; 
-    };
-
+    /** Creates list of pending messages */
     const updatePendingMessages = (messages: MessageRecord) => {
         setPendingMessages(
             Object.values(messages)
                 .filter(ms => !ms.message.cleared)
-                .map(ms => ms.message)
         );
     };
-
+    
     //========================================================================
     //Dispatch
     function messageTableReducer(prev: MessageRecord, newMessage: Message) {
-        prev[lastMessageId] = {message: newMessage, responded: false, onCalendar: false};
+        prev[lastMessageId] = {
+            message: newMessage, 
+            responded: false, 
+            onCalendar: false,
+            remainingTime: newMessage.timeToRespond
+        };
         setLastMessageId(id => id+1);
         updatePendingMessages(prev);
         return prev;
     };
     const [messages, dispatchMessages] = useReducer(
         messageTableReducer, {
+            0: FIRST_MESSAGE_STATUS,
             ...Object.fromEntries(
                 Array.from({length: 0}, (_, n) => ([n, {   
                     message:{
@@ -81,6 +70,8 @@ export const MessageProvider = ({ children }: ContextProviderProps) => {
         } as MessageRecord
     );
 
+    useEffect(() => updatePendingMessages(messages), []);
+
     //====================================================================
     const workerRef = useRef<Worker | null>(null);
 
@@ -90,14 +81,27 @@ export const MessageProvider = ({ children }: ContextProviderProps) => {
         return () => workerRef.current?.terminate();
     }, []);
 
+    //Start message loop
     useEffect(() => {
-        workerRef.current?.postMessage({});
-        const interval = setInterval(() => {
-            workerRef.current?.postMessage({});
-        }, 30000);
-        return () => clearInterval(interval);
+        workerRef.current?.postMessage({start: true});
     }, []);
 
+    //====================================================================
+    /** Creates timer to update remaining message times */
+    useEffect(() => {
+        const interval = setInterval(() => {
+            Object.values(messages).forEach(ms => {
+                ms.remainingTime -= 1000;
+                if (ms.remainingTime <= 0) endGame();
+            });
+            updatePendingMessages(messages);
+        }, 1000);
+        return () => {clearInterval(interval)};
+    }, []);
+
+    /**YOU LOSE */
+    const endGame = () => {};
+    
     //====================================================================
     /**Updates message state when you respond to the correct number */
     const isMessageResponded = (phoneNumber: string) => {
@@ -138,4 +142,23 @@ export const MessageProvider = ({ children }: ContextProviderProps) => {
 export function useMessages() {
     const context = useContext(MessageContext);
     return context;
-}
+};
+
+
+//====================================================================
+const now = new Date();
+const FIRST_MESSAGE_STATUS = {
+    message: {
+        message: `Hey it's Jeff Coleman!  I need you to write me a React demo using some of our dependenices!  \
+                    I need it done today at ${now.getHours()}:00.`,
+        author: 'Jeff Coleman',
+        phoneNumber: '503-706-4442',
+        date: now,
+        messageTime: now,
+        cleared: false,
+        timeToRespond: 90000
+    },
+    responded: false,
+    onCalendar: false,
+    remainingTime: 90000
+} as MessageStatus;

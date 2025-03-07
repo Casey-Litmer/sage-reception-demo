@@ -25,13 +25,14 @@ export default function SMSComponent() {
                 type='text'
                 value={phoneNumber}
                 onChange={handleNumber}
-                className='w-2/3'
+                className='w-2/3 max-w-xl'
+
             />
             <div>Your Response:</div>
             <textarea
                 value={response}
                 onChange={handleResponse}
-                className='w-2/3 Input'
+                className='w-2/3 max-w-3xl Input'
             />
             <Button type='submit' color={'black'} className='border-2'>
                 <p style={{fontSize:24, textAlign:'center'}}>Send</p>

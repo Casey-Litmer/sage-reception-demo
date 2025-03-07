@@ -3,12 +3,12 @@
 //=================================================================================
 //NAMES
 export const FIRST_NAMES = [
-    "Oliver", "Liam", "Noah", "James", "William", "Elijah", "Henry", "Lucas", "Jeff",
+    "Oliver", "Liam", "Noah", "James", "William", "Elijah", "Henry", "Lucas", "Barnabas", 
     "Ethan", "Alexander", "Mason", "Benjamin", "Daniel", "Matthew", "Jackson", "Sebastian"
 ];
 
 export const LAST_NAMES = [
-    "Smith", "Johnson", "Brown", "Williams", "Jones", "Garcia", "Miller", "Davis", "Coleman",
+    "Smith", "Johnson", "Brown", "Williams", "Jones", "Garcia", "Miller", "Davis", 
     "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson", "Thomas"
 ];
 
@@ -79,6 +79,14 @@ export const madlib = (name: string, date:Date) => {
 //=================================================================================
 //PHONE NUMBERs
 export const getRandomPhoneNumber = () => {
-    const numbers = Array.from({length: 10}, () => Math.floor(Math.random()*10));
+    const numbers = Array.from({length: 10}, () => Math.floor(Math.random()*10)).join('');
     return `${numbers.slice(0,3)}-${numbers.slice(3,6)}-${numbers.slice(6,10)}`;
+};
+
+//=================================================================================
+//TIME TO RESPOND
+export const getRandomTime = (curve: number) => {
+    const max = 100000;
+    const min = 20000;
+    return min + (max-min) * (Math.random()**curve)
 };
