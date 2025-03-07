@@ -4,7 +4,7 @@
 
 - Using React@19 and vite@latest for this demo
 
-- Can't get tailwind to import rules in index.css (breaking change?)
+X- Can't get tailwind to import rules in index.css (breaking change?)
     - Attempting to add
         ```
         @tailwind base;
@@ -18,8 +18,10 @@
 
         But the warning still persists... fuck it
 
+    - What works: disabling CSS validate in vscode (ctrl+,)
 
-- For some reason, the new vite project added margins to #root, which cannot be overwritten
+
+X- For some reason, the new vite project added margins to #root, which cannot be overwritten
     in index.css.  Not sure where the default #root is that the body div is pulling from
 
     - What I tried: 
@@ -40,6 +42,34 @@
   It pushes everything around so I have to set it to a fixed
   height of 400px.  This of course doesn't scale with the window.
   It might be one of those things that you have to calculate the height manually.
+
+
+X- Tailwind overrides h1,h2,h3,... styles by default
+  Must include this to make it normal:
+  ```
+    @layer base {
+    h1 {
+        font-size: 3.2em !important;
+        line-height: 1.1 !important;
+    }
+    h2 {
+        font-size: 2.5em !important;
+    }
+    h3 {
+        font-size: 2em !important;
+    }
+    }
+  ```
+
+X- w-full textSections keep overflowing the page when there are multiple of them
+  I am pretty sure this version of tailwindcss has some serious bugs with that.
+  I have tried everything to no avail.
+  - What works:
+    set overflow-x: hidden in body
+
+
+- Can't get flowbite <Button> to apply text size
+
 
 //================================================================  
 //Todo

@@ -10,7 +10,6 @@ export default function PageContents(props: PageContentsProps) {
     return (
         <div style={{
             alignItems:'center',
-            //justifyContent:'center',
             display: 'flex',
             flex: 1,
             flexDirection:'column',

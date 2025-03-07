@@ -1,5 +1,5 @@
 import React, { JSX } from 'react';
-import './Footer.css';
+import './Toolbar.css';
 import 'flowbite/dist/flowbite.css';
 import { FOOTER_HEIGHT } from '../../GLOBALS';
 import { Button } from 'flowbite-react';
@@ -15,11 +15,11 @@ interface FooterProps {
     setView: React.Dispatch<React.SetStateAction<JSX.Element>>;
 }
 
-export default function Footer(props: FooterProps) {
+export default function Toolbar(props: FooterProps) {
     const {setView} = props;
 
     return (
-        <div className='BoxOutline Footer bg-background' style={{height: FOOTER_HEIGHT}}>
+        <div className='BoxOutline Toolbar bg-background' style={{height: FOOTER_HEIGHT}}>
             <Button.Group>
                 <Button onClick={() => setView(<CalendarComponent/>)}>
                     <FaRegCalendarAlt size={ICON_SIZE} color='var(--color-middle)'/>

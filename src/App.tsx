@@ -1,9 +1,9 @@
 import {Route, Routes} from 'react-router-dom';
 import './App.css';
-import Home from './pages/home/Home';
-import About from './pages/about/About';
+import Dashboard from './pages/dashboard/Dashboard';
 import { MessageProvider } from './contexts/MessageProvider';
 import { CalendarEventsProvider } from './contexts/CalendarEventsProvider';
+import Home from './pages/home/Home';
 
 
 
@@ -14,7 +14,7 @@ function App() {
           <CalendarEventsProvider>
             <Routes>
               <Route path='/' element={<Home/>}/>
-              <Route path='/about' element={<About/>}/>
+              <Route path='/dashboard' element={<Dashboard/>}/>
             </Routes>
           </CalendarEventsProvider>
         </MessageProvider>

@@ -24,18 +24,18 @@ export default function HamburgerMenu() {
         </IconButton>
 
         {open && 
-            <div style={{
-                position:'absolute',
+            <div className='absolute bg-background' 
+            style={{
                 right:'0px',
                 top: HEADER_HEIGHT,
-                width: '96px',
-                height: 100,
-                backgroundColor:'var(--color-background)',
+                width: '128px',
+                height: 200,
                 border: '1px',
                 borderStyle: 'solid',
-                borderColor: 'var(--color-middle)'
+                borderColor: 'var(--color-middle)',
+                zIndex: 10
             }}>
-                poop        
+                       
             </div>
         }
         </>

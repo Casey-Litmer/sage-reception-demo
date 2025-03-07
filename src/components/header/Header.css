@@ -2,4 +2,10 @@
 .Header {
     border-bottom: 1px;
     border: 0px;
+    width: 100vw;
+    padding-left: 10%;
+    padding-right: 10%;
+    justify-content: space-between;
+    flex-direction: row;
+    display: flex;
 }

@@ -3,6 +3,20 @@
 @tailwind utilities;
 
 
+@layer base {
+  h1 {
+    font-size: 3.2em !important;
+    line-height: 1.1 !important;
+  }
+  h2 {
+    font-size: 2.5em !important;
+  }
+  h3 {
+    font-size: 2em !important;
+  }
+}
+
+
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -11,6 +25,8 @@
   --color-background: rgb(255, 255, 255);
   --color-middle: rgb(146, 16, 16);
   --color-top: rgb(211, 132, 28);
+  --color-grey1: rgb(248, 248, 248);
+  --color-grey2: rgb(240, 240, 240);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -37,12 +53,14 @@ a:hover {
 body {
   margin: 0;
   display: flex;
+  overflow-x: hidden;
 
   padding: 0px;
   
   min-width: 320px;
   min-height: 100vh;
 }
+
 
 h1 {
   font-size: 3.2em;

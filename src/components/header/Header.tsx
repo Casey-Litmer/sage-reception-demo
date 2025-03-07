@@ -1,12 +1,24 @@
-
 import './Header.css';
-import HamburgerMenu from '../footer/HamburgerMenu';
 import { HEADER_HEIGHT } from '../../GLOBALS';
+import ClockButton from '../ClockButton';
+import Logo from './Logo';
 
-export default function Header() {
+
+interface HeaderProps {
+    clockButtonMode?: 'in' | 'out';
+};
+export default function Header(props: HeaderProps) {
+    const {clockButtonMode = 'in'} = props;
+
     return (
         <div className='BoxOutline Header bg-background' style={{height: HEADER_HEIGHT}}>
-            <HamburgerMenu/>
+            
+           <Logo/>
+
+            <div className='pt-1'>
+                <ClockButton mode={clockButtonMode}/>
+            </div>
+            
         </div>
     );
 };

@@ -63,7 +63,7 @@ export function MessageContainer(props: MessageContainerProps) {
                 </div>}
             </div>
 
-            <div className='h-2.1 w-full' style={{
+            <div className='h-2.1 w-full bg-background' style={{
                 borderTop: 1, borderBottom:1, 
                 borderStyle:'solid', borderColor: 'var(--color-top)'
             }}>
@@ -72,9 +72,10 @@ export function MessageContainer(props: MessageContainerProps) {
             </div>
 
             {open && 
-                <div 
-                className='DropDownContainer'>
-                    {message.message}
+                <div className='DropDownContainer'>
+                    <div className='InnerContainer'>
+                        {message.message}
+                    </div>
                 </div>
             }
         </div>
