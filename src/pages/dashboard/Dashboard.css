@@ -3,10 +3,22 @@
 .Dashboard {
     width: 100vw;
     height: 100vh;
-
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     flex: 1;
     flex-grow: 1;
+}
+
+
+.GameOverScreen {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: black;
+    z-index: 110;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-size: larger;
 }

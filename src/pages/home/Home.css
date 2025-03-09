@@ -1,0 +1,18 @@
+
+
+.Accordion {
+    width: 50rem;
+}
+
+.Accordion-Title {
+    font-size: 12px;
+}
+
+.Accordion-Content {
+    text-align: left;
+    
+    p {
+        text-indent: 2rem;
+        padding-left: 2rem;
+    }
+}

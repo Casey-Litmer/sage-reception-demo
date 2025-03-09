@@ -9,10 +9,18 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily:{
+        sans:['Roboto', 'Montserrat', 'sans-serif'],
+        sans2:['Montserrat', 'Roboto', 'sans-serif'],
+        serif: ['Merriweather', 'serif']
+      },
       colors: {
         background: 'var(--color-background)',
         middle: 'var(--color-middle)',
-        top: 'var(--color-top)'
+        top: 'var(--color-top)',
+        grey1: 'var(--color-grey1)',
+        grey2: 'var(--color-grey2)',
+        grey3: 'var(--color-grey3)'
       },
     },
   },

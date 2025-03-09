@@ -15,6 +15,7 @@ export default function CalendarComponent() {
     const [date, setDate] = useState(new Date());
     const {events, dispatchEvents} = useCalendarEvents();
 
+    //========================================================================
     const handleSelectSlot = ({start, end}: SlotInfo) => {
         if (view !== Views.MONTH) {
             const title = prompt('Event Title:');
@@ -23,6 +24,7 @@ export default function CalendarComponent() {
         };
     };
 
+    //========================================================================
     return (
         <div className='CalendarWrapper'>
             <Calendar

@@ -12,13 +12,10 @@ export default function Header(props: HeaderProps) {
 
     return (
         <div className='BoxOutline Header bg-background' style={{height: HEADER_HEIGHT}}>
-            
            <Logo/>
-
             <div className='pt-1'>
                 <ClockButton mode={clockButtonMode}/>
             </div>
-            
         </div>
     );
 };

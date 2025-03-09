@@ -4,11 +4,14 @@ import { Button } from 'flowbite-react';
 import { CiPaperplane } from "react-icons/ci";
 import { useMessages } from '../../contexts/MessageProvider';
 
+
+
 export default function SMSComponent() {
     const {isMessageResponded} = useMessages();
     const [phoneNumber, setPhoneNumber] = useState('');
     const [response, setResponse] = useState('');
     
+    //========================================================================
     const handleSubmit = (ev:any) => {
         ev.preventDefault();
         setPhoneNumber('');
@@ -18,6 +21,7 @@ export default function SMSComponent() {
     const handleNumber = (ev: any) => setPhoneNumber(ev.target.value);
     const handleResponse = (ev: any) => setResponse(ev.target.value);
     
+    //============================================================================
     return (
         <form onSubmit={handleSubmit} className=' space-y-2 SMS'>
             <div>Client's Phone Number:</div>
@@ -25,14 +29,13 @@ export default function SMSComponent() {
                 type='text'
                 value={phoneNumber}
                 onChange={handleNumber}
-                className='w-2/3 max-w-xl'
-
+                className='w-2/3 max-w-xl Input'
             />
             <div>Your Response:</div>
             <textarea
                 value={response}
                 onChange={handleResponse}
-                className='w-2/3 max-w-3xl Input'
+                className='w-2/3 max-w-3xl h-48 Input'
             />
             <Button type='submit' color={'black'} className='border-2'>
                 <p style={{fontSize:24, textAlign:'center'}}>Send</p>

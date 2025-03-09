@@ -4,6 +4,8 @@ import { Message, MessageRecord, MessageStatus, } from '../types';
 
 type ContextProviderProps = {
     children: React.ReactNode;
+    isRunning: boolean;
+    setIsRunning: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 type MessageContextType = {
@@ -16,7 +18,8 @@ type MessageContextType = {
 
 export const MessageContext = createContext({} as MessageContextType);
 
-export const MessageProvider = ({ children }: ContextProviderProps) => {
+export const MessageProvider = (props: ContextProviderProps) => {
+    const {children, isRunning, setIsRunning} = props;
     const [lastMessageId, setLastMessageId] = useState(1);
     const [pendingMessages, setPendingMessages] = useState<MessageStatus[]>([]);
 
@@ -90,17 +93,22 @@ export const MessageProvider = ({ children }: ContextProviderProps) => {
     /** Creates timer to update remaining message times */
     useEffect(() => {
         const interval = setInterval(() => {
-            Object.values(messages).forEach(ms => {
-                ms.remainingTime -= 1000;
-                if (ms.remainingTime <= 0) endGame();
-            });
-            updatePendingMessages(messages);
+            if(isRunning) {
+                Object.values(messages).forEach(ms => {
+                    ms.remainingTime -= 1000;
+                    if (ms.remainingTime <= 0) endGame();
+                });
+                updatePendingMessages(messages);
+            };
         }, 1000);
         return () => {clearInterval(interval)};
-    }, []);
+    }, [isRunning]);
 
     /**YOU LOSE */
-    const endGame = () => {};
+    const endGame = () => {
+        setIsRunning(false);
+        workerRef.current?.postMessage({stop:true});
+    };
     
     //====================================================================
     /**Updates message state when you respond to the correct number */
@@ -157,10 +165,10 @@ const FIRST_MESSAGE = () => {
             date: now,
             messageTime: now,
             cleared: false,
-            timeToRespond: 90000
+            timeToRespond: 90000/20
         },
         responded: false,
         onCalendar: false,
-        remainingTime: 90000
+        remainingTime: 90000/20
     } as MessageStatus;
 };

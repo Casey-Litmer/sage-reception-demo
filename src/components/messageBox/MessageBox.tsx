@@ -47,10 +47,9 @@ export function MessageContainer(props: MessageContainerProps) {
     //============================================================================
     return (
         <div className='BoxOutline MessageContainer'>
+            
             <div style={{flexDirection:'row', display:'flex', alignItems:'center'}}>
-                <IconButton id='View Message'
-                    onClick = {handleOpen}
-                >
+                <IconButton onClick = {handleOpen}>
                     {open ? <ChevronLeft/> : <ChevronRight/>}
                 </IconButton>
 
@@ -67,12 +66,12 @@ export function MessageContainer(props: MessageContainerProps) {
             <PatienceBar timerBarPercent={timerBarPercent}/>
 
             {open && 
-                <div className='DropDownContainer'>
-                    <div className='InnerContainer'>
-                        {message.message}
-                    </div>
+            <div className='DropDownContainer'>
+                <div className='InnerContainer'>
+                    {message.message}
                 </div>
-            }
+            </div>}
+            
         </div>
     );
 };

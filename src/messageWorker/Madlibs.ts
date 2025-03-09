@@ -62,7 +62,7 @@ export const madlib = (name: string, date:Date) => {
     `Hi, my AC isn't working, and it's getting unbearable. I get off work at ${hour}. Could you come by then on ${month} ${day}?`,
     `Hello, I want my living room repainted. Would you be free to check it out on ${month} ${day} at ${hour}?`,
     `Hi, my water heater stopped working, and I have no hot water. Can you come over on ${month} ${day}, say around ${hour}`,
-    `Hey, I need an extra outlet in my garage for a new freezer before my bachelor party at ${hour}. Could you swing by on the ${day} of ${month} afternoon?`,
+    `Hey, I need an extra outlet in my garage for a new freezer before my bachelor party at ${hour}. Could you swing by on the ${day} of ${month}?`,
     `Hello my name is ${name}, I noticed a leak in my roof after last night's storm. Could you check it out on ${month} ${day}?  There will be another hurricane at ${hour}!`,
     `Hi, I need some new sod and tree trimming done. Would ${month} ${day} at ${hour} work for you?`,
     `Hey, I'm thinking of adding a deck to my backyard. Any chance you're free on ${month} ${day} at ${hour}?`,
@@ -77,7 +77,7 @@ export const madlib = (name: string, date:Date) => {
 };
 
 //=================================================================================
-//PHONE NUMBERs
+//PHONE NUMBERS
 export const getRandomPhoneNumber = () => {
     const numbers = Array.from({length: 10}, () => Math.floor(Math.random()*10)).join('');
     return `${numbers.slice(0,3)}-${numbers.slice(3,6)}-${numbers.slice(6,10)}`;

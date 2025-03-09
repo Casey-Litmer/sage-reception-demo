@@ -7,13 +7,33 @@
   h1 {
     font-size: 3.2em !important;
     line-height: 1.1 !important;
+    font-weight: 400 !important;
+    text-shadow: 0px 0px 1px #232c44;
+    @apply font-sans2;
   }
   h2 {
     font-size: 2.5em !important;
+    text-shadow: 0px 0px 1px #232c44;
+    @apply font-sans2;
   }
   h3 {
     font-size: 2em !important;
+    text-shadow: 0px 0px 1px #232c44;
+    @apply font-sans2;
   }
+  h4 {
+    font-size: 1.25em !important;
+    text-shadow: 0px 0px 1px #232c44;
+    @apply font-sans2;
+  }
+
+  * {
+    @apply font-sans;
+  }
+}
+
+p, h1, h2, h3, h4, a {
+  white-space: pre-wrap;
 }
 
 
@@ -27,6 +47,7 @@
   --color-top: rgb(211, 132, 28);
   --color-grey1: rgb(248, 248, 248);
   --color-grey2: rgb(240, 240, 240);
+  --color-grey3: rgb(175, 175, 175);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -61,6 +82,10 @@ body {
   min-height: 100vh;
 }
 
+
+img {
+  z-index: 100;
+}
 
 h1 {
   font-size: 3.2em;

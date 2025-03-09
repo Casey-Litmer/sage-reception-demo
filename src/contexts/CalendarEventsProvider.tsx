@@ -19,12 +19,11 @@ export const CalendarEventsProvider = ({ children }: EventsContextProviderProps)
 
     //====================================================================
     const eventsReducer = (prev: CalendarEvent[], newEvent: CalendarEvent) => {
-        //In real life, this wouldn't check if the new event is added to the calendar
+        //In real life, it wouldn't check if the new event is added to the calendar
         //here.  That would be up to the microservices.  
         isMessageOnCalendar(newEvent.start);
         return [newEvent, ...prev];
     };
-    
     const [events, dispatchEvents] = useReducer(eventsReducer, []);
 
     //====================================================================

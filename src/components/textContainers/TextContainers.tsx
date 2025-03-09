@@ -1,55 +1,63 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties } from 'react';
+import {animated} from '@react-spring/web';
 
 
+const AnimatedDiv = animated("div");
+
+//=======================================================================================
 interface HomeTextSectionProps {
     children?: React.ReactNode;
     level: 'background' | 'raised';
-    style?: CSSProperties;
+    style?: CSSProperties | any;
+    className?: string;
 }
 export default function HomeTextSection(props: HomeTextSectionProps) {
-    const {children, level, style} = props;
+    const {children, level, style, className} = props;
 
     const levelStyles = (level === 'raised') ? {
-            backgroundColor:'#EEEEEE', marginBottom: 0, marginTop: 32,
-            borderTopRightRadius:48, borderTopLeftRadius:48
-        } : {}
+            backgroundColor:'var(--color-grey2)', marginBottom: 0, marginTop: 32,
+            borderTopRightRadius:32, borderTopLeftRadius:32
+        } : {marginBottom: 64}
 
     return (
-        <div className='w-full min-h-32 mb-8 py-8  overflow-x-hidden
-                        flex flex-col lg:flex-row justify-center items-center
-                        lg:space-x-16 space-y-8 lg:space-y-0' 
+        <AnimatedDiv 
+            className={'w-full py-8 overflow-x-hidden min-h-32 \
+                flex flex-col lg:flex-row justify-center items-center \
+                lg:space-x-16 space-y-8 lg:space-y-0 shadow-lg ' + className}
             style={{...levelStyles, ...style}}>
             {children}
-        </div>
+        </AnimatedDiv>
     );
 }
 
-//===================================================================================
+//=======================================================================================
 interface HomeSideTextProps {
     children?: React.ReactNode;
-    style?: CSSProperties;
+    style?: CSSProperties | any;
+    className?: string;
 }
 export function HomeSideText(props: HomeSideTextProps) {
-    const {children, style} = props;
+    const {children, style, className} = props;
         
     return (
-        <div className='w-96 p-8 justify-center leading-loose' style={style}>
+        <AnimatedDiv className={'w-96 p-8 justify-center leading-loose ' + className} style={style}>
             {children}
-        </div>
+        </AnimatedDiv>
     );
 };
 
-//===================================================================================
+//=========================================================================================
 interface HomeCenterTextProps {
     children?: React.ReactNode;
-    style?: CSSProperties;
+    style?: CSSProperties | any;
+    className?: string;
 }
 export function HomeCenterText(props: HomeCenterTextProps) {
-    const {children, style} = props;
+    const {children, style, className} = props;
         
     return (
-        <div className='p-8 justify-center leading-loose' style={{width:'50vw', ...style}}>
+        <AnimatedDiv className={'p-8 justify-center leading-loose ' + className} style={{width:'50vw', ...style}}>
             {children}
-        </div>
+        </AnimatedDiv>
     );
 };

@@ -5,20 +5,29 @@ declare const self: DedicatedWorkerGlobalScope;
 import { Message } from "../types";
 import { getRandomDate, getRandomName, getRandomPhoneNumber, getRandomTime, madlib } from "./Madlibs";
 
+//===============================================================================
+let isRunning = false;
 
 self.onmessage = (e) => {
-    if (e.data.start) 
+    if (e.data.start) {
         fetchMessage();
+        isRunning = true;
+    };
+    if (e.data.stop) {
+        isRunning = false;
+    };   
 };
 
+//===============================================================================
 /* Set a random interval, send a message, and restart */
 const fetchMessage = () => {
     setTimeout(() => {
-        sendMessage();
-        fetchMessage();
+        if (isRunning){
+            sendMessage();
+            fetchMessage();
+        };
     }, Math.random() * 25000 + 18000);
 };
-
 
 const sendMessage = () => {
     const name = getRandomName();
