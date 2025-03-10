@@ -2,7 +2,8 @@ import { useState } from 'react';
 import './MessageBox.css';
 import { Message } from '../../types';
 import { IconButton } from '@mui/material';
-import { ChevronLeft, ChevronRight, Warning} from '@mui/icons-material';
+import { ChevronLeft, ChevronRight,} from '@mui/icons-material';
+import { IoMdWarning } from "react-icons/io";
 import { useMessages } from '../../contexts/MessageProvider';
 import PatienceBar from './PatienceBar';
 
@@ -48,7 +49,7 @@ export function MessageContainer(props: MessageContainerProps) {
     return (
         <div className='BoxOutline MessageContainer'>
             
-            <div style={{flexDirection:'row', display:'flex', alignItems:'center'}}>
+            <div className='flex flex-row items-center'>
                 <IconButton onClick = {handleOpen}>
                     {open ? <ChevronLeft/> : <ChevronRight/>}
                 </IconButton>
@@ -56,10 +57,10 @@ export function MessageContainer(props: MessageContainerProps) {
                 <text>{info}</text>
 
                 {urgent && 
-                <div className='absolute right-8' 
+                <div className='absolute right-8 flex' 
                     style={{color:'var(--color-middle)'}}>
                     Urgent
-                    <Warning/>
+                    <IoMdWarning size={24}/>
                 </div>}
             </div>
 

@@ -18,6 +18,7 @@ export default {
         background: 'var(--color-background)',
         middle: 'var(--color-middle)',
         top: 'var(--color-top)',
+        tophighlight: 'var(--color-top-highlight)',
         grey1: 'var(--color-grey1)',
         grey2: 'var(--color-grey2)',
         grey3: 'var(--color-grey3)'

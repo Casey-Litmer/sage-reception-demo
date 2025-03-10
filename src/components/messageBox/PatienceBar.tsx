@@ -1,5 +1,7 @@
 import { useSpring, animated } from '@react-spring/web';
 
+
+
 const AnimatedDiv = animated("div");
 
 interface PatienceBarProps {

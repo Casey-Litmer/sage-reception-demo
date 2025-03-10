@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useReducer, useRef, useState } fr
 import { Message, MessageRecord, MessageStatus, } from '../types';
 
 
+
 type ContextProviderProps = {
     children: React.ReactNode;
     isRunning: boolean;
@@ -94,10 +95,12 @@ export const MessageProvider = (props: ContextProviderProps) => {
     useEffect(() => {
         const interval = setInterval(() => {
             if(isRunning) {
-                Object.values(messages).forEach(ms => {
-                    ms.remainingTime -= 1000;
-                    if (ms.remainingTime <= 0) endGame();
-                });
+                Object.values(messages)
+                    .filter(ms => !ms.message.cleared)
+                    .forEach(ms => {
+                        ms.remainingTime -= 1000;
+                        if (ms.remainingTime <= 0) endGame();
+                    });
                 updatePendingMessages(messages);
             };
         }, 1000);
@@ -165,10 +168,10 @@ const FIRST_MESSAGE = () => {
             date: now,
             messageTime: now,
             cleared: false,
-            timeToRespond: 90000/20
+            timeToRespond: 90000
         },
         responded: false,
         onCalendar: false,
-        remainingTime: 90000/20
+        remainingTime: 90000
     } as MessageStatus;
 };

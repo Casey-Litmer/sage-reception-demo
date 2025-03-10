@@ -24,7 +24,7 @@ export default function FaqAccordion() {
             <Accordion.Panel>
                 <Accordion.Title className="Accordion-Title">Is this even necessary?</Accordion.Title>
                 <Accordion.Content className="Accordion-Content">
-                    <Q>This doesn't seem that different from what I already am doing.</Q>
+                    <Q>This doesn't seem any different from what I am already doing.</Q>
                     <A>Think not what Staged Reception can do for you, but what you can
                         do better for yourself with Staged Reception!  Confucius once said: 
                         "he who improves 1% will eventually surpass he who improves 100%".  It's 
@@ -48,10 +48,10 @@ export default function FaqAccordion() {
 };
 
 //==============================================================================================================
-interface WrapperProps {
+interface QAProps {
     children?: React.ReactNode;
 };
-const Q = ({children}: WrapperProps) => {
+const Q = ({children}: QAProps) => {
     return (
     <div className='flex flex-row space-x-2'>
         <h4 style={{color:'var(--color-middle)'}}>Q:</h4>
@@ -60,14 +60,14 @@ const Q = ({children}: WrapperProps) => {
     );
 };
 
-const A = ({children}: WrapperProps) => {
+const A = ({children}: QAProps) => {
     return (
-    <div>
+    <div className='mb-1'>
         <Divider sx={{marginBottom:'8px', 
                       marginLeft:'20px', 
                       borderBottomWidth:'4px', 
                       borderColor:'var(--color-top)'}}/>
-        <p className='bg-grey1 rounded-lg p-3 leading-relaxed'>{children}</p>
+        <p className='bg-grey1 rounded-lg p-3 leading-relaxed font-sans2'>{children}</p>
     </div>
     );
 };

@@ -56,7 +56,7 @@ export function HomeCenterText(props: HomeCenterTextProps) {
     const {children, style, className} = props;
         
     return (
-        <AnimatedDiv className={'p-8 justify-center leading-loose ' + className} style={{width:'50vw', ...style}}>
+        <AnimatedDiv className={'p-8 justify-center items-center leading-loose ' + className} style={{width:'50vw', ...style}}>
             {children}
         </AnimatedDiv>
     );

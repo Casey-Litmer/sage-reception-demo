@@ -1,14 +1,14 @@
 import React, { JSX } from 'react';
 import './Toolbar.css';
 import 'flowbite/dist/flowbite.css';
-import { FOOTER_HEIGHT } from '../../GLOBALS';
+import { FOOTER_HEIGHT, ICON_SIZE_STD } from '../../GLOBALS';
 import { Button } from 'flowbite-react';
 import CalendarComponent from '../taskViews/Calendar';
 import SMSComponent from '../taskViews/SMS';
 import { FaRegCalendarAlt, FaPaperPlane } from "react-icons/fa";
 
 
-const ICON_SIZE = 32;
+
 
 interface FooterProps {
     view: JSX.Element;
@@ -22,10 +22,10 @@ export default function Toolbar(props: FooterProps) {
         <div className='BoxOutline Toolbar bg-background' style={{height: FOOTER_HEIGHT}}>
             <Button.Group className='space-x-2'>
                 <Button onClick={() => setView(<CalendarComponent/>)}>
-                    <FaRegCalendarAlt size={ICON_SIZE} color='var(--color-middle)'/>
+                    <FaRegCalendarAlt size={ICON_SIZE_STD} color='var(--color-middle)'/>
                 </Button>
                 <Button onClick={() => setView(<SMSComponent/>)}>
-                    <FaPaperPlane size={ICON_SIZE} color='var(--color-middle)'/>
+                    <FaPaperPlane size={ICON_SIZE_STD} color='var(--color-middle)'/>
                 </Button>
             </Button.Group>
         </div>

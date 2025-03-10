@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 import './Dashboard.css';
 import MessageBox from '../../components/messageBox/MessageBox';
 import PageContents from '../../components/PageContents';
@@ -14,7 +14,6 @@ import GameOverScreen from './GameOverScreen';
 export default function Dashboard() {
     const [view, setView] = useState(<CalenderComponent/>);
     const [isRunning, setIsRunning] = useState(true);
-
 
     return (
         <MessageProvider isRunning={isRunning} setIsRunning={setIsRunning}>
