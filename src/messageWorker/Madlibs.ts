@@ -56,7 +56,7 @@ export const madlib = (name: string, date:Date) => {
 
     const MADLIBS = [
     `Hey, this is ${name}. My kitchen sink is leaking bad. Any chance you could stop by on ${month} ${day} at ${hour}?`,
-    `Hi, I need help installing some ceiling lights. Could you come on ${month} ${day} around ${hour} in the afternoon?`,
+    `Hi, I need help installing some ceiling lights. Could you come on ${month} ${day} around ${hour}?`,
     `Hello, my yard is overgrown, and I need it cleaned up. Can you make it out ${month} ${day} at ${hour}?`,
     `Hey, I'm remodeling my kitchen and need some advice. Are you available on ${month} ${day} at ${hour}?`,
     `Hi, my AC isn't working, and it's getting unbearable. I get off work at ${hour}. Could you come by then on ${month} ${day}?`,
