@@ -80,3 +80,5 @@ X- w-full textSections keep overflowing the page when there are multiple of them
     - .env.[mode] : loaded in specific mode
     - .env.[mode].local : loaded in specific mode, ignored by git
 
+- Learn more about react-big-calendar styling and best patterns for
+    handling events/input.

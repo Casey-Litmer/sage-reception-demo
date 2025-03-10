@@ -8,15 +8,7 @@ export default function PageContents(props: PageContentsProps) {
     const {children} = props;
   
     return (
-        <div style={{
-            alignItems:'center',
-            display: 'flex',
-            flex: 1,
-            flexDirection:'column',
-            width: '100%',
-            height: '100%',
-            paddingTop: '32px',
-        }}>
+        <div className='items-center flex flex-col w-full h-full pt-8'>
             {children}
         </div>
   );

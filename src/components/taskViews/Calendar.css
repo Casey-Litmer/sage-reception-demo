@@ -10,3 +10,20 @@
     padding: 10px;
     background-color: var(--color-grey1);
 }
+
+.rbc-header {
+    color: black;
+    background-color: var(--color-top);
+}
+
+.rbc-label {
+    background-color: var(--color-grey1);
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/*Hides the top section*/
+.rbc-allday-cell {
+    display: none;
+}
