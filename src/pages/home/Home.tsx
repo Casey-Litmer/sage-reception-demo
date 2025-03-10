@@ -10,7 +10,6 @@ import './Home.css';
 import { FaPaperPlane, FaRegCalendarAlt } from "react-icons/fa";
 import { IoMdWarning } from "react-icons/io";
 import IconWrapper from "./IconWrapper";
-import { keyframes } from "@emotion/react";
 
 
 
@@ -40,7 +39,7 @@ export default function Home() {
     //Intersection observers
     useEffect(() => {
         const secondSectionObs = new IntersectionObserver(([entry]) => {
-                if (entry.isIntersecting) trigSecondSection(true);});
+                if (entry.isIntersecting) trigSecondSection(true);}, {root: null, rootMargin: '50px'});
         const thirdSectionObs = new IntersectionObserver(([entry]) => {
                 if (entry.isIntersecting) trigThirdSection(true);});
         const FAQObs = new IntersectionObserver(([entry]) => {

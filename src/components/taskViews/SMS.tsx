@@ -38,7 +38,7 @@ export default function SMSComponent() {
                 className='w-2/3 max-w-3xl h-48 Input'
             />
             <Button type='submit' color={'black'} className='border-2'>
-                <p style={{fontSize:24, textAlign:'center'}}>Send</p>
+                <p style={{fontSize:24, marginTop:4}}>Send</p>
                 <CiPaperplane size={32} color='var(--color-middle)'/>
             </Button>
         </form>
