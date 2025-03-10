@@ -114,7 +114,7 @@ export default function Home() {
             
             <PageContents>
                 <h1 className="mb-12 mt-4">Who Am I?</h1>
-                <HomeTextSection level="background" style={firstSectionSpring}>
+                <HomeTextSection level="background" className="lg:pl-16" style={firstSectionSpring}>
                     <HomeSideText style={firstTextSpring}>
                         <h3>Never Again!</h3>
                         <p className="font-sans2">
