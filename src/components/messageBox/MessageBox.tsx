@@ -38,7 +38,9 @@ export function MessageContainer(props: MessageContainerProps) {
     //============================================================================
     const messageTime = message.messageTime;
     const timerBarPercent = remainingTime / message.timeToRespond * 100;
-    const formattedTime = `${messageTime.getHours()}:${messageTime.getMinutes()}:${messageTime.getSeconds()}`
+    const formattedTime = String(messageTime.getHours()).padStart(2, '0') + ':'
+                        + String(messageTime.getMinutes()).padStart(2, '0') + ':'
+                        + String(messageTime.getSeconds()).padStart(2,'0')
     const info = `[${formattedTime}]: ${message.author} (${message.phoneNumber})`;
     const urgent = message.timeToRespond < 60000; 
 
