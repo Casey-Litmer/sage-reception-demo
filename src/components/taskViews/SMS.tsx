@@ -37,7 +37,7 @@ export default function SMSComponent() {
                 onChange={handleResponse}
                 className='w-2/3 max-w-3xl h-48 Input'
             />
-            <Button type='submit' color={'black'} className='border-2'>
+            <Button type='submit' color={'black'} className='border-2 pt-1 top-2'>
                 <p style={{fontSize:24, marginTop:4}}>Send</p>
                 <CiPaperplane size={32} color='var(--color-middle)'/>
             </Button>
