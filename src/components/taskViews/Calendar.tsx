@@ -45,6 +45,7 @@ export default function CalendarComponent() {
                 localizer={localizer}
                 startAccessor="start"
                 endAccessor="end"
+                formats={{timeGutterFormat: 'HH:mm'}}
                 view={view}
                 date={date}
                 timeslots={1}
