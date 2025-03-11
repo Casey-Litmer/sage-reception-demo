@@ -57,20 +57,6 @@ export const MessageProvider = (props: ContextProviderProps) => {
     const [messages, dispatchMessages] = useReducer(
         messageTableReducer, {
             0: FIRST_MESSAGE(),
-            ...Object.fromEntries(
-                Array.from({length: 0}, (_, n) => ([n, {   
-                    message:{
-                        message:'aaaaaaaa',
-                        author:'me',
-                        phoneNumber:'971-380-6774',
-                        cleared:false,
-                        date: new Date(),
-                        messageTime: new Date()
-                    },
-                    responded: false,
-                    onCalendar: false
-            }]))
-            )
         } as MessageRecord
     );
 
