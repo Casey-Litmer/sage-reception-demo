@@ -69,4 +69,3 @@ While there is nothing here that computationally requires a separate thread, I t
 
 - I've mostly had a good time with the flowbite components (especially the ButtonGroup) but there are some components that don't work well with tailwindcss.  The Accordion can't be animated so it's a bit jumpy so I would opt to use a different one.
 - The phone numbers need to be entered in the same format as displayed in the message.  This can easily be formatted, but not super necessary for the demo.
-- I am using react@19 for this demo

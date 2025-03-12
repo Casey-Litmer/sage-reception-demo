@@ -3,6 +3,8 @@
 //Issues
 
 - Using React@19 and vite@latest for this demo
+    - This is a dependency hellscape.  Switching back to React@18
+    
 
 X- Can't get tailwind to import rules in index.css (breaking change?)
     - Attempting to add
